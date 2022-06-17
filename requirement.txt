@@ -1,0 +1,7 @@
+requests
+urllib
+argparse
+validators
+BeautifulSoup
+python3-nmap
+colorama

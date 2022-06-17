@@ -1,0 +1,11 @@
+Filter		Description																				Example
+
+allintext	Searches for occurrences of all the keywords given.										allintext:"keyword"
+intext		Searches for the occurrences of keywords all at once or one at a time.					intext:"keyword"
+inurl		Searches for a URL matching one of the keywords.										inurl:"keyword"
+allinurl	Searches for a URL matching all the keywords in the query.								allinurl:"keyword"
+intitle		Searches for occurrences of keywords in title all or one.								intitle:"keyword"
+allintitle	Searches for occurrences of keywords all at a time.										allintitle:"keyword"
+site		Specifically searches that particular site and lists all the results for that site.		site:"www.google.com"
+filetype	Searches for a particular filetype mentioned in the query.								filetype:"pdf"
+link		Searches for external links to pages.													link:"keyword"
