@@ -55,10 +55,18 @@ def get_banner(url):
 
     header = {'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36'}
     r = requests.get(url, headers=header)
-    print('Server : ', r.headers['server'])
-    print('X-Powered-By : ',  r.headers['X-Powered-By']) 
-    print("-"*86)
-    search_cve(r.headers['server'])
+
+    h = []
+    with open('db/header.txt') as f:
+        for x in f:
+            h.append(x[:-1])
+    for i in r.headers:
+        if i in h:
+            print('[+] {} : {}'.format(i, r.headers[i]))
+
+    if 'Server' in r.headers:
+        print("-"*86)
+        search_cve(r.headers['server'])
 
     lst = ['robots.txt', '.htaccess']
     for i in lst:
@@ -68,10 +76,14 @@ def get_banner(url):
             print(r2.text)
             print("-"*86)
 
-    print("[+] Find all input in web {}\n".format(url))
     soup = BeautifulSoup(r.text, 'html.parser')
+    print("[+] Find all input :")
     input_data = soup.find_all('input')
     print(input_data)
+    print("-"*86)
+    print("[+] Find all tag meta :")
+    meta_data = soup.find_all('meta')
+    print(meta_data)
     print("-"*86)
 
     links = re.findall('(?:href=")(.*?)"', r.text)
